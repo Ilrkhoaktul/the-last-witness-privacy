@@ -1,0 +1,88 @@
+:root {
+  --bg: #0b0d10;
+  --text: #e6e6e6;
+  --muted: #9aa3ad;
+  --accent: #9fb3c8;
+  --accent-strong: #c9d9ee;
+  --line: rgba(255,255,255,0.08);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 72px 24px 64px;
+  position: relative;
+}
+
+.lang-switch {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.lang-switch button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.lang-switch button.active {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.sigil {
+  width: 72px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 28px;
+  animation: sigilPulse 4.5s ease-in-out infinite;
+}
+
+@keyframes sigilPulse {
+  0% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+  100% { opacity: 0.35; }
+}
+
+h1 {
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 48px;
+}
+
+h2 {
+  margin-top: 48px;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+
+.lang { display: none; }
+.lang.active { display: block; }
+
+footer {
+  margin-top: 56px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
