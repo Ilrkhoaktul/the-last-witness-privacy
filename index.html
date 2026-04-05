@@ -11,6 +11,7 @@
       --text: #e6e6e6;
       --muted: #9aa3ad;
       --accent: #9fb3c8;
+      --accent-strong: #c9d9ee;
       --line: rgba(255,255,255,0.08);
     }
 
@@ -28,15 +29,18 @@
     .container {
       max-width: 820px;
       margin: 0 auto;
-      padding: 64px 24px;
+      padding: 72px 24px 64px;
       position: relative;
     }
 
+    /* LANGUAGE SWITCH */
     .lang-switch {
       position: absolute;
       top: 24px;
       right: 24px;
-      font-size: 0.9rem;
+      z-index: 10;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
     }
 
     .lang-switch button {
@@ -44,20 +48,34 @@
       border: none;
       color: var(--muted);
       cursor: pointer;
-      margin-left: 8px;
+      margin-left: 10px;
+      padding: 4px 6px;
+      transition: color 0.2s ease;
+    }
+
+    .lang-switch button:hover {
+      color: var(--accent);
     }
 
     .lang-switch button.active {
-      color: var(--accent);
+      color: var(--accent-strong);
       font-weight: 600;
     }
 
+    /* SIGIL */
     .sigil {
-      width: 60px;
+      width: 72px;
       height: 1px;
       background: var(--accent);
-      opacity: 0.6;
-      margin-bottom: 24px;
+      opacity: 0.7;
+      margin-bottom: 28px;
+      animation: sigilPulse 4.5s ease-in-out infinite;
+    }
+
+    @keyframes sigilPulse {
+      0%   { opacity: 0.35; }
+      50%  { opacity: 0.85; }
+      100% { opacity: 0.35; }
     }
 
     h1 {
@@ -112,11 +130,13 @@
 <body>
   <div class="container">
 
+    <!-- LANGUAGE SWITCH -->
     <div class="lang-switch">
       <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
       <button id="btn-tr" onclick="setLang('tr')">TR</button>
     </div>
 
+    <!-- SIGIL -->
     <div class="sigil"></div>
 
     <!-- ENGLISH -->
@@ -147,21 +167,13 @@
         gameplay experience.
       </p>
 
-      <h2>3. Third‑Party Services</h2>
-      <p>
-        The Game may use third‑party services such as Google Play or Steam, which
-        are governed by their own privacy policies.
-      </p>
-
-      <h2>4. Children’s Privacy</h2>
+      <h2>3. Children’s Privacy</h2>
       <p>
         The Game is not intended for children under the age of 13.
       </p>
 
-      <h2>5. Contact</h2>
-      <p>
-        Email: privacy@thelastwitness.game
-      </p>
+      <h2>4. Contact</h2>
+      <p>Email: privacy@thelastwitness.game</p>
     </div>
 
     <!-- TURKISH -->
@@ -192,21 +204,13 @@
         düzeltmek ve deneyimi iyileştirmek amacıyla kullanılır.
       </p>
 
-      <h2>3. Üçüncü Taraf Hizmetler</h2>
-      <p>
-        Oyun; Google Play veya Steam gibi üçüncü taraf platformları kullanabilir.
-        Bu hizmetler kendi gizlilik politikalarına tabidir.
-      </p>
-
-      <h2>4. Çocukların Gizliliği</h2>
+      <h2>3. Çocukların Gizliliği</h2>
       <p>
         Oyun 13 yaş altındaki çocuklara yönelik değildir.
       </p>
 
-      <h2>5. İletişim</h2>
-      <p>
-        E‑posta: privacy@thelastwitness.game
-      </p>
+      <h2>4. İletişim</h2>
+      <p>E‑posta: privacy@thelastwitness.game</p>
     </div>
 
     <hr />
