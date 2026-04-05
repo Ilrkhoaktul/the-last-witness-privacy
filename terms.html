@@ -22,7 +22,6 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
                    Roboto, Arial, sans-serif;
       line-height: 1.7;
-      letter-spacing: 0.2px;
     }
 
     .container {
@@ -47,6 +46,7 @@
       color: var(--muted);
       cursor: pointer;
       margin-left: 10px;
+      padding: 4px 6px;
     }
 
     .lang-switch button.active {
@@ -86,25 +86,16 @@
       margin-top: 48px;
       font-size: 1.3rem;
       color: var(--accent);
-      font-weight: 500;
-    }
-
-    p, li { font-size: 1rem; }
-    ul { margin-left: 20px; }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--line);
-      margin: 56px 0;
-    }
-
-    footer {
-      font-size: 0.85rem;
-      color: var(--muted);
     }
 
     .lang { display: none; }
     .lang.active { display: block; }
+
+    footer {
+      margin-top: 56px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
   </style>
 </head>
 
@@ -112,115 +103,92 @@
 <div class="container">
 
   <div class="lang-switch">
-    <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-    <button id="btn-tr" onclick="setLang('tr')">TR</button>
+    <button id="btn-en" class="active">EN</button>
+    <button id="btn-tr">TR</button>
   </div>
 
   <div class="sigil"></div>
 
-  <!-- ENGLISH -->
+  <!-- EN -->
   <div id="lang-en" class="lang active">
     <h1>Terms & Conditions</h1>
     <div class="subtitle">The Last Witness · Effective: 31 March 2026</div>
 
     <p>
-      By downloading, installing, or playing <strong>The Last Witness</strong>,
-      you agree to these Terms & Conditions.
+      By downloading or playing <strong>The Last Witness</strong>, you agree to
+      these Terms & Conditions.
     </p>
 
-    <h2>1. License</h2>
+    <h2>License</h2>
     <p>
-      The Game is licensed, not sold. You are granted a limited, non‑exclusive,
-      non‑transferable license to use the Game for personal, non‑commercial
-      purposes.
+      The Game is licensed, not sold. You may use it for personal,
+      non‑commercial purposes only.
     </p>
 
-    <h2>2. Intellectual Property</h2>
+    <h2>Intellectual Property</h2>
     <p>
-      All content, code, visuals, audio, and design elements are the property of
-      the developer and are protected by applicable laws.
+      All content and assets belong to the developer.
     </p>
 
-    <h2>3. Acceptable Use</h2>
+    <h2>Disclaimer</h2>
     <p>
-      You agree not to modify, reverse engineer, redistribute, or exploit the
-      Game in any unauthorized manner.
-    </p>
-
-    <h2>4. Disclaimer</h2>
-    <p>
-      The Game is provided “as is” without warranties of any kind.
-    </p>
-
-    <h2>5. Limitation of Liability</h2>
-    <p>
-      The developer shall not be liable for any damages arising from the use or
-      inability to use the Game.
-    </p>
-
-    <h2>6. Termination</h2>
-    <p>
-      This license may be terminated if you breach these Terms.
+      The Game is provided “as is”.
     </p>
   </div>
 
-  <!-- TURKISH -->
+  <!-- TR -->
   <div id="lang-tr" class="lang">
     <h1>Kullanım Şartları</h1>
     <div class="subtitle">The Last Witness · Yürürlük: 31 Mart 2026</div>
 
     <p>
-      <strong>The Last Witness</strong> oyununu indirerek veya oynayarak bu
-      Kullanım Şartlarını kabul etmiş olursunuz.
+      <strong>The Last Witness</strong> oyununu kullanarak bu şartları kabul
+      etmiş olursunuz.
     </p>
 
-    <h2>1. Lisans</h2>
+    <h2>Lisans</h2>
     <p>
-      Oyun satılmaz, lisanslanır. Oyun yalnızca kişisel ve ticari olmayan
-      kullanım için lisanslanmıştır.
+      Oyun satılmaz, lisanslanır. Yalnızca kişisel kullanım içindir.
     </p>
 
-    <h2>2. Fikri Mülkiyet</h2>
+    <h2>Fikri Mülkiyet</h2>
     <p>
-      Oyuna ait tüm içerik ve varlıklar geliştiriciye aittir.
+      Tüm içerikler geliştiriciye aittir.
     </p>
 
-    <h2>3. Kabul Edilebilir Kullanım</h2>
-    <p>
-      Oyunu izinsiz şekilde değiştiremez, çoğaltamaz veya tersine
-      mühendislik yapamazsınız.
-    </p>
-
-    <h2>4. Sorumluluk Reddi</h2>
+    <h2>Sorumluluk Reddi</h2>
     <p>
       Oyun “olduğu gibi” sunulmaktadır.
     </p>
-
-    <h2>5. Sorumluluğun Sınırlandırılması</h2>
-    <p>
-      Geliştirici, oyunun kullanımından doğabilecek zararlardan sorumlu
-      tutulamaz.
-    </p>
-
-    <h2>6. Fesih</h2>
-    <p>
-      Şartların ihlali durumunda lisansınız sona erdirilebilir.
-    </p>
   </div>
 
-  <hr />
   <footer>© 2026 The Last Witness</footer>
-
 </div>
 
 <script>
-function setLang(lang) {
-  document.getElementById('lang-en').classList.remove('active');
-  document.getElementById('lang-tr').classList.remove('active');
-  document.getElementById('btn-en').classList.remove('active');
-  document.getElementById('btn-tr').classList.remove('active');
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnEn = document.getElementById("btn-en");
+    const btnTr = document.getElementById("btn-tr");
+    const langEn = document.getElementById("lang-en");
+    const langTr = document.getElementById("lang-tr");
 
-  document.getElementById('lang-' + lang).classList.add('active');
-  document.getElementById('btn-' + lang).classList.add('active');
-  document.documentElement.lang = lang;
-}
+    btnEn.addEventListener("click", () => {
+      langEn.classList.add("active");
+      langTr.classList.remove("active");
+      btnEn.classList.add("active");
+      btnTr.classList.remove("active");
+      document.documentElement.lang = "en";
+    });
+
+    btnTr.addEventListener("click", () => {
+      langTr.classList.add("active");
+      langEn.classList.remove("active");
+      btnTr.classList.add("active");
+      btnEn.classList.remove("active");
+      document.documentElement.lang = "tr";
+    });
+  });
+</script>
+
+</body>
+</html>
